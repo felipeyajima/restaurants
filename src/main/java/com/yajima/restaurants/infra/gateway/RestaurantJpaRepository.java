@@ -9,6 +9,7 @@ import com.yajima.restaurants.infra.persistence.RestaurantRepository;
 
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class RestaurantJpaRepository implements RepositoryOfRestaurant {
@@ -32,7 +33,9 @@ public class RestaurantJpaRepository implements RepositoryOfRestaurant {
     @Override
     public List<Restaurant> listEveryting() {
 
-        //return repository.findAll();
-        return null;
+        return repository.findAll().stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());
+
     }
 }
