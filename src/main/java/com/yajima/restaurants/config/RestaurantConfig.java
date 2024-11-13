@@ -27,7 +27,7 @@ public class RestaurantConfig {
     }
 
     @Bean
-    RestaurantEntityMapper returnMapper(){
+    RestaurantEntityMapper returnMapperRestaurant(){
         return new RestaurantEntityMapper();
     }
 }
