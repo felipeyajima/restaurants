@@ -22,7 +22,8 @@ public class RestaurantEntity {
 
 
     public RestaurantEntity(){}
-    public RestaurantEntity(String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour) {
+    public RestaurantEntity(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour) {
+        this.id = id;
         this.name = name;
         this.cnpj = cnpj;
         this.foodType = foodType;
