@@ -23,15 +23,29 @@ public class RestaurantController {
 
     @PostMapping
     public RestaurantDto createRestaurant(@RequestBody RestaurantDto dto){
-        Restaurant saved = createRestaurant.createRestaurant(new Restaurant(dto.id(), dto.name(), dto.cnpj(), dto.foodType(), dto.startingHour(), dto.finishingHour()));
+        Restaurant saved = createRestaurant.createRestaurant(new Restaurant(
+                dto.getId(),
+                dto.getName(),
+                dto.getCnpj(),
+                dto.getFoodType(),
+                dto.getStartingHour(),
+                dto.getFinishingHour()
+        ));
 
-        return new RestaurantDto(saved.getId(),saved.getName(), saved.getCnpj(), saved.getFoodType(), saved.getStartingHour(), saved.getFinishingHour());
+        return dto;
     }
 
     @GetMapping
     public List<RestaurantDto> listRestaurants(){
         return listRestaurants.getAllRestaurants().stream()
-                .map(r -> new RestaurantDto(r.getId(), r.getCnpj(), r.getName(), r.getFoodType(), r.getStartingHour(), r.getFinishingHour())).collect(Collectors.toList());
+                .map(r -> new RestaurantDto(
+                        r.getId(),
+                        r.getName(),
+                        r.getCnpj(),
+                        r.getFoodType(),
+                        r.getStartingHour(),
+                        r.getFinishingHour()
+                        )).collect(Collectors.toList());
     }
 
 

@@ -24,13 +24,20 @@ public class TableController {
 
     @PostMapping
     public TableDto createTable(@RequestBody TableDto dto){
-        Table saved = createTable.createTable(new Table(dto.tableNumber(), dto.numberOfChairs(), dto.restaurant()));
-        return new TableDto(saved.getTableNumber(), saved.getNumberOfChairs(), saved.getRestaurant());
+        Table saved = createTable.createTable(new Table(
+                dto.getId(),
+                dto.getTableNumber(),
+                dto.getNumberOfChairs(),
+                dto.getRestaurant()
+                ));
+        return dto;
     }
 
     @GetMapping
     public List<TableDto> listTables(){
-        return listTables.getAllTables().stream().map(t -> new TableDto(t.getTableNumber(), t.getNumberOfChairs(), t.getRestaurant())).collect(Collectors.toList());
+        return listTables.getAllTables().stream().map(t -> new TableDto(
+                t.getId(), t.getTableNumber(), t.getNumberOfChairs(), t.getRestaurant()
+                )).collect(Collectors.toList());
     }
 
 

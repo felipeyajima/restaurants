@@ -19,9 +19,17 @@ public class TableEntityMapper {
 
     public Table toDomain(TableEntity entity){
         return new Table(
+                entity.getId(),
                 entity.getTableNumber(),
                 entity.getNumberOfChairs(),
-                new Restaurant(entity.getRestaurantEntity().getId(), entity.getRestaurantEntity().getName(),entity.getRestaurantEntity().getCnpj(),entity.getRestaurantEntity().getFoodType(),entity.getRestaurantEntity().getStartingHour(),entity.getRestaurantEntity().getFinishingHour())
+                new Restaurant(
+                        entity.getRestaurantEntity().getId(),
+                        entity.getRestaurantEntity().getName(),
+                        entity.getRestaurantEntity().getCnpj(),
+                        entity.getRestaurantEntity().getFoodType(),
+                        entity.getRestaurantEntity().getStartingHour(),
+                        entity.getRestaurantEntity().getFinishingHour()
+                )
         );
     }
 

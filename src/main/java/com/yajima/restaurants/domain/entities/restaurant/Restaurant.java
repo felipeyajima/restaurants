@@ -1,8 +1,11 @@
 package com.yajima.restaurants.domain.entities.restaurant;
 
 import com.yajima.restaurants.domain.Address;
+import com.yajima.restaurants.domain.entities.table.Table;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class Restaurant {
@@ -14,6 +17,8 @@ public class Restaurant {
     private Address address;
     private LocalTime startingHour;
     private LocalTime finishingHour;
+
+    private List<Table> tables = new ArrayList<>();
 
     public Restaurant(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour) {
         this.id = id;
@@ -35,6 +40,14 @@ public class Restaurant {
     }
 
     public Restaurant() {
+    }
+
+    public List<Table> getTables() {
+        return tables;
+    }
+
+    public void setTables(List<Table> tables) {
+        this.tables = tables;
     }
 
     public UUID getId() {
