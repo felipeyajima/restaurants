@@ -39,6 +39,17 @@ public class Restaurant {
 
     }
 
+    public Restaurant(UUID id, String name, String cnpj, String foodType, Address address, LocalTime startingHour, LocalTime finishingHour, List<Table> tables) {
+        this.id = id;
+        this.name = name;
+        this.cnpj = cnpj;
+        this.foodType = foodType;
+        this.address = address;
+        this.startingHour = startingHour;
+        this.finishingHour = finishingHour;
+        this.tables = tables;
+    }
+
     public Restaurant() {
     }
 

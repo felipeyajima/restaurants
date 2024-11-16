@@ -5,6 +5,7 @@ import com.yajima.restaurants.application.usecases.ListRestaurants;
 import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +31,7 @@ public class RestaurantController {
                 dto.getFoodType(),
                 dto.getStartingHour(),
                 dto.getFinishingHour()
+
         ));
 
         return dto;
@@ -44,7 +46,8 @@ public class RestaurantController {
                         r.getCnpj(),
                         r.getFoodType(),
                         r.getStartingHour(),
-                        r.getFinishingHour()
+                        r.getFinishingHour(),
+                        r.getTables()
                         )).collect(Collectors.toList());
     }
 

@@ -16,14 +16,25 @@ public class RestaurantDto{
     private LocalTime startingHour;
     private LocalTime finishingHour;
 
+    private List<Table> tables;
 
-    public RestaurantDto(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour) {
+
+    public RestaurantDto(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour, List<Table> tables) {
         this.id = id;
         this.name = name;
         this.cnpj = cnpj;
         this.foodType = foodType;
         this.startingHour = startingHour;
         this.finishingHour = finishingHour;
+        this.tables = tables;
+    }
+
+    public List<Table> getTables() {
+        return tables;
+    }
+
+    public void setTables(List<Table> tables) {
+        this.tables = tables;
     }
 
     public UUID getId() {
