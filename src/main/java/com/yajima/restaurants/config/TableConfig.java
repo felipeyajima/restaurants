@@ -3,6 +3,7 @@ package com.yajima.restaurants.config;
 import com.yajima.restaurants.application.gateways.RepositoryOfTable;
 import com.yajima.restaurants.application.usecases.CreateTable;
 import com.yajima.restaurants.application.usecases.ListTables;
+import com.yajima.restaurants.application.usecases.ListTablesPerRestaurant;
 import com.yajima.restaurants.infra.gateway.TableEntityMapper;
 import com.yajima.restaurants.infra.gateway.TableJpaRepository;
 import com.yajima.restaurants.infra.persistence.TableRepository;
@@ -21,6 +22,9 @@ public class TableConfig {
     ListTables listTables(RepositoryOfTable repositoryOfTable){
         return new ListTables(repositoryOfTable);
     }
+
+    @Bean
+    ListTablesPerRestaurant listTablesPerRestaurant(RepositoryOfTable repositoryOfTable){ return  new ListTablesPerRestaurant(repositoryOfTable);}
 
     @Bean
     TableJpaRepository tableJpaRepository(TableRepository repository, TableEntityMapper mapper){

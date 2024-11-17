@@ -5,6 +5,7 @@ import com.yajima.restaurants.application.usecases.ListRestaurants;
 import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,15 +24,31 @@ public class RestaurantController {
 
     @PostMapping
     public RestaurantDto createRestaurant(@RequestBody RestaurantDto dto){
-        Restaurant saved = createRestaurant.createRestaurant(new Restaurant(dto.name(), dto.cnpj(), dto.foodType(), dto.startingHour(), dto.finishingHour()));
+        Restaurant saved = createRestaurant.createRestaurant(new Restaurant(
+                dto.getId(),
+                dto.getName(),
+                dto.getCnpj(),
+                dto.getFoodType(),
+                dto.getStartingHour(),
+                dto.getFinishingHour()
 
-        return new RestaurantDto(saved.getName(), saved.getCnpj(), saved.getFoodType(), saved.getStartingHour(), saved.getFinishingHour());
+        ));
+
+        return dto;
     }
 
     @GetMapping
     public List<RestaurantDto> listRestaurants(){
         return listRestaurants.getAllRestaurants().stream()
-                .map(r -> new RestaurantDto(r.getCnpj(), r.getName(), r.getFoodType(), r.getStartingHour(), r.getFinishingHour())).collect(Collectors.toList());
+                .map(r -> new RestaurantDto(
+                        r.getId(),
+                        r.getName(),
+                        r.getCnpj(),
+                        r.getFoodType(),
+                        r.getStartingHour(),
+                        r.getFinishingHour(),
+                        r.getTables()
+                        )).collect(Collectors.toList());
     }
 
 

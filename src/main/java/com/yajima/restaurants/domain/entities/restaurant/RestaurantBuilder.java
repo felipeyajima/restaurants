@@ -5,6 +5,7 @@ import com.yajima.restaurants.domain.Address;
 import java.time.LocalTime;
 
 public class RestaurantBuilder {
+    /*
     private Restaurant restaurant;
 
     public Restaurant withNameCnpjOpenningHourFinishingHour(String name, String cnpj, LocalTime openingHour, LocalTime finishingHour){
@@ -16,4 +17,6 @@ public class RestaurantBuilder {
         this.restaurant.setAddress(new Address(cep, number, complement));
         return this.restaurant;
     }
+
+     */
 }

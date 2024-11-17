@@ -8,15 +8,18 @@ public class RestaurantEntityMapper {
 
     public RestaurantEntity toEntity(Restaurant restaurant){
         return new RestaurantEntity(
+                restaurant.getId(),
                 restaurant.getName(),
                 restaurant.getCnpj(),
                 restaurant.getFoodType(),
                 restaurant.getStartingHour(),
                 restaurant.getFinishingHour());
+
     }
 
     public Restaurant toDomain(RestaurantEntity entity){
         return new Restaurant(
+                entity.getId(),
                 entity.getName(),
                 entity.getCnpj(),
                 entity.getFoodType(),

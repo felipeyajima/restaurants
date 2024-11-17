@@ -18,12 +18,18 @@ public class TableEntity {
     private Integer numberOfChairs;
 
 
+    @ManyToOne
+    @JoinColumn(name="restaurant_id")
+    private RestaurantEntity restaurantEntity;
+
+
     public TableEntity() {
     }
 
-    public TableEntity(Integer tableNumber, Integer numberOfChairs) {
+    public TableEntity(Integer tableNumber, Integer numberOfChairs, RestaurantEntity restaurantEntity) {
         this.tableNumber = tableNumber;
         this.numberOfChairs = numberOfChairs;
+        this.restaurantEntity = restaurantEntity;
     }
 
 
