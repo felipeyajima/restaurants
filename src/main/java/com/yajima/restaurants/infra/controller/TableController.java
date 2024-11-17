@@ -1,13 +1,12 @@
 package com.yajima.restaurants.infra.controller;
 
-import com.yajima.restaurants.application.usecases.CreateTable;
-import com.yajima.restaurants.application.usecases.ListTables;
-import com.yajima.restaurants.application.usecases.ListTablesPerRestaurant;
+import com.yajima.restaurants.application.usecases.tables.CreateTable;
+import com.yajima.restaurants.application.usecases.tables.ListTables;
+import com.yajima.restaurants.application.usecases.tables.ListTablesPerRestaurant;
 import com.yajima.restaurants.domain.entities.table.Table;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController

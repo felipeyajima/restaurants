@@ -1,9 +1,8 @@
 package com.yajima.restaurants.config;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfTable;
-import com.yajima.restaurants.application.usecases.CreateTable;
-import com.yajima.restaurants.application.usecases.ListTables;
-import com.yajima.restaurants.application.usecases.ListTablesPerRestaurant;
+import com.yajima.restaurants.application.usecases.tables.CreateTable;
+import com.yajima.restaurants.application.usecases.tables.ListTables;
 import com.yajima.restaurants.infra.gateway.TableEntityMapper;
 import com.yajima.restaurants.infra.gateway.TableJpaRepository;
 import com.yajima.restaurants.infra.persistence.TableRepository;

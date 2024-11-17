@@ -12,7 +12,7 @@ public interface RepositoryOfRestaurant {
 
     List<Restaurant> listEveryting();
 
-
+    List<Restaurant> listByFoodType(String foodType);
 
 
     //public Restaurant findById(UUID id);

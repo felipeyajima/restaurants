@@ -1,8 +1,9 @@
 package com.yajima.restaurants.infra.controller;
 
-import com.yajima.restaurants.application.usecases.CreateRestaurant;
-import com.yajima.restaurants.application.usecases.ListRestaurants;
-import com.yajima.restaurants.application.usecases.ListTablesPerRestaurant;
+import com.yajima.restaurants.application.usecases.restaurant.CreateRestaurant;
+import com.yajima.restaurants.application.usecases.restaurant.ListRestaurants;
+import com.yajima.restaurants.application.usecases.restaurant.ListRestaurantsPerFoodType;
+import com.yajima.restaurants.application.usecases.tables.ListTablesPerRestaurant;
 import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +19,13 @@ public class RestaurantController {
     private final ListRestaurants listRestaurants;
 
     private final ListTablesPerRestaurant listTablesPerRestaurant;
+    private final ListRestaurantsPerFoodType listRestaurantsPerFoodType;
 
-    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, ListTablesPerRestaurant listTablesPerRestaurant) {
+    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, ListTablesPerRestaurant listTablesPerRestaurant, ListRestaurantsPerFoodType listRestaurantsPerFoodType) {
         this.createRestaurant = createRestaurant;
         this.listRestaurants = listRestaurants;
         this.listTablesPerRestaurant = listTablesPerRestaurant;
+        this.listRestaurantsPerFoodType = listRestaurantsPerFoodType;
     }
 
     @PostMapping
@@ -63,5 +66,20 @@ public class RestaurantController {
                 t.getId(), t.getTableNumber(), t.getNumberOfChairs(), t.getRestaurant()
         )).collect(Collectors.toList());
     }
+
+    @GetMapping("/foodtype")
+    public List<RestaurantDto> ListRestaurantPerFoodType(@RequestParam("foodtype") String foodtype){
+        return listRestaurantsPerFoodType.listByFoodType(foodtype).stream().map(r -> new RestaurantDto(
+                r.getId(),
+                r.getName(),
+                r.getCnpj(),
+                r.getFoodType(),
+                r.getStartingHour(),
+                r.getFinishingHour(),
+                r.getPostalCode(),
+                r.getAddressNumber()
+        )).collect(Collectors.toList());
+    }
+
 
 }

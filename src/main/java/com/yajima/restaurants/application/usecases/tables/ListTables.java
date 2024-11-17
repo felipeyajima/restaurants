@@ -1,4 +1,4 @@
-package com.yajima.restaurants.application.usecases;
+package com.yajima.restaurants.application.usecases.tables;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfTable;
 import com.yajima.restaurants.domain.entities.table.Table;

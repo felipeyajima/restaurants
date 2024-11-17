@@ -1,8 +1,8 @@
 package com.yajima.restaurants.config;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfCustomer;
-import com.yajima.restaurants.application.usecases.CreateCustomer;
-import com.yajima.restaurants.application.usecases.ListCustomers;
+import com.yajima.restaurants.application.usecases.customer.CreateCustomer;
+import com.yajima.restaurants.application.usecases.customer.ListCustomers;
 import com.yajima.restaurants.infra.gateway.CustomerEntityMapper;
 import com.yajima.restaurants.infra.gateway.CustomerJpaRepository;
 

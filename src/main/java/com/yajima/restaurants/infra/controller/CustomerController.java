@@ -1,7 +1,7 @@
 package com.yajima.restaurants.infra.controller;
 
-import com.yajima.restaurants.application.usecases.CreateCustomer;
-import com.yajima.restaurants.application.usecases.ListCustomers;
+import com.yajima.restaurants.application.usecases.customer.CreateCustomer;
+import com.yajima.restaurants.application.usecases.customer.ListCustomers;
 import com.yajima.restaurants.domain.entities.customer.Customer;
 import org.springframework.web.bind.annotation.*;
 

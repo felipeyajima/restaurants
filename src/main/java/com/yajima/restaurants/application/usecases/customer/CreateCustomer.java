@@ -1,4 +1,4 @@
-package com.yajima.restaurants.application.usecases;
+package com.yajima.restaurants.application.usecases.customer;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfCustomer;
 import com.yajima.restaurants.domain.entities.customer.Customer;
