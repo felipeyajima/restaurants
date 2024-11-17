@@ -15,27 +15,22 @@ public class RestaurantDto{
     //private Address address,
     private LocalTime startingHour;
     private LocalTime finishingHour;
+    private String postalCode;
+    private Integer addressNumber;
 
-    private List<Table> tables;
 
-
-    public RestaurantDto(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour, List<Table> tables) {
+    public RestaurantDto(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour, String postalCode, Integer addressNumber) {
         this.id = id;
         this.name = name;
         this.cnpj = cnpj;
         this.foodType = foodType;
         this.startingHour = startingHour;
         this.finishingHour = finishingHour;
-        this.tables = tables;
+        this.postalCode = postalCode;
+        this.addressNumber = addressNumber;
+
     }
 
-    public List<Table> getTables() {
-        return tables;
-    }
-
-    public void setTables(List<Table> tables) {
-        this.tables = tables;
-    }
 
     public UUID getId() {
         return id;
@@ -83,5 +78,21 @@ public class RestaurantDto{
 
     public void setFinishingHour(LocalTime finishingHour) {
         this.finishingHour = finishingHour;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public Integer getAddressNumber() {
+        return addressNumber;
+    }
+
+    public void setAddressNumber(Integer addressNumber) {
+        this.addressNumber = addressNumber;
     }
 }

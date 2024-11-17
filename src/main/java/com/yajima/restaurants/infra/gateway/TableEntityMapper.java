@@ -11,7 +11,16 @@ public class TableEntityMapper {
         return new TableEntity(
                 table.getTableNumber(),
                 table.getNumberOfChairs(),
-                new RestaurantEntity(table.getRestaurant().getId(), table.getRestaurant().getName(),table.getRestaurant().getCnpj(),table.getRestaurant().getFoodType(),table.getRestaurant().getStartingHour(),table.getRestaurant().getFinishingHour())
+                new RestaurantEntity(
+                        table.getRestaurant().getId(),
+                        table.getRestaurant().getName(),
+                        table.getRestaurant().getCnpj(),
+                        table.getRestaurant().getFoodType(),
+                        table.getRestaurant().getStartingHour(),
+                        table.getRestaurant().getFinishingHour(),
+                        table.getRestaurant().getPostalCode(),
+                        table.getRestaurant().getAddressNumber()
+                )
 
 
         );
@@ -28,7 +37,9 @@ public class TableEntityMapper {
                         entity.getRestaurantEntity().getCnpj(),
                         entity.getRestaurantEntity().getFoodType(),
                         entity.getRestaurantEntity().getStartingHour(),
-                        entity.getRestaurantEntity().getFinishingHour()
+                        entity.getRestaurantEntity().getFinishingHour(),
+                        entity.getRestaurantEntity().getPostalCode(),
+                        entity.getRestaurantEntity().getAddressNumber()
                 )
         );
     }

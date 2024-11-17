@@ -13,7 +13,10 @@ public class RestaurantEntityMapper {
                 restaurant.getCnpj(),
                 restaurant.getFoodType(),
                 restaurant.getStartingHour(),
-                restaurant.getFinishingHour());
+                restaurant.getFinishingHour(),
+                restaurant.getPostalCode(),
+                restaurant.getAddressNumber()
+                );
 
     }
 
@@ -24,7 +27,9 @@ public class RestaurantEntityMapper {
                 entity.getCnpj(),
                 entity.getFoodType(),
                 entity.getStartingHour(),
-                entity.getFinishingHour()
+                entity.getFinishingHour(),
+                entity.getPostalCode(),
+                entity.getAddressNumber()
                 );
     }
 

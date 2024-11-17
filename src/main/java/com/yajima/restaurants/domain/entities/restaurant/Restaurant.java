@@ -4,8 +4,6 @@ import com.yajima.restaurants.domain.Address;
 import com.yajima.restaurants.domain.entities.table.Table;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Restaurant {
@@ -14,13 +12,15 @@ public class Restaurant {
     private String cnpj;
     private String foodType;
 
-    private Address address;
     private LocalTime startingHour;
     private LocalTime finishingHour;
 
-    private List<Table> tables = new ArrayList<>();
+    private String postalCode;
+    private Integer addressNumber;
 
-    public Restaurant(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour) {
+
+
+    public Restaurant(UUID id, String name, String cnpj, String foodType, LocalTime startingHour, LocalTime finishingHour, String postalCode, Integer addressNumber) {
         this.id = id;
         this.name = name;
 
@@ -33,33 +33,17 @@ public class Restaurant {
 
         this.cnpj = cnpj;
         this.foodType = foodType;
-        //this.address = address;
         this.startingHour = startingHour;
         this.finishingHour = finishingHour;
+        this.postalCode = postalCode;
+        this.addressNumber = addressNumber;
 
     }
 
-    public Restaurant(UUID id, String name, String cnpj, String foodType, Address address, LocalTime startingHour, LocalTime finishingHour, List<Table> tables) {
-        this.id = id;
-        this.name = name;
-        this.cnpj = cnpj;
-        this.foodType = foodType;
-        this.address = address;
-        this.startingHour = startingHour;
-        this.finishingHour = finishingHour;
-        this.tables = tables;
-    }
 
     public Restaurant() {
     }
 
-    public List<Table> getTables() {
-        return tables;
-    }
-
-    public void setTables(List<Table> tables) {
-        this.tables = tables;
-    }
 
     public UUID getId() {
         return id;
@@ -93,13 +77,7 @@ public class Restaurant {
         this.foodType = foodType;
     }
 
-    public Address getAddress() {
-        return address;
-    }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     public LocalTime getStartingHour() {
         return startingHour;
@@ -115,5 +93,21 @@ public class Restaurant {
 
     public void setFinishingHour(LocalTime finishingHour) {
         this.finishingHour = finishingHour;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
+    }
+
+    public Integer getAddressNumber() {
+        return addressNumber;
+    }
+
+    public void setAddressNumber(Integer addressNumber) {
+        this.addressNumber = addressNumber;
     }
 }

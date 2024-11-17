@@ -33,7 +33,9 @@ public class RestaurantController {
                 dto.getCnpj(),
                 dto.getFoodType(),
                 dto.getStartingHour(),
-                dto.getFinishingHour()
+                dto.getFinishingHour(),
+                dto.getPostalCode(),
+                dto.getAddressNumber()
 
         ));
 
@@ -50,7 +52,8 @@ public class RestaurantController {
                         r.getFoodType(),
                         r.getStartingHour(),
                         r.getFinishingHour(),
-                        r.getTables()
+                        r.getPostalCode(),
+                        r.getAddressNumber()
                         )).collect(Collectors.toList());
     }
 
