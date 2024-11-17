@@ -23,8 +23,6 @@ public class TableConfig {
         return new ListTables(repositoryOfTable);
     }
 
-    @Bean
-    ListTablesPerRestaurant listTablesPerRestaurant(RepositoryOfTable repositoryOfTable){ return  new ListTablesPerRestaurant(repositoryOfTable);}
 
     @Bean
     TableJpaRepository tableJpaRepository(TableRepository repository, TableEntityMapper mapper){

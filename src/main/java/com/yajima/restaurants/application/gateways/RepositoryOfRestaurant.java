@@ -13,6 +13,8 @@ public interface RepositoryOfRestaurant {
     List<Restaurant> listEveryting();
 
 
+
+
     //public Restaurant findById(UUID id);
 
     //public void update(Restaurant restaurant);

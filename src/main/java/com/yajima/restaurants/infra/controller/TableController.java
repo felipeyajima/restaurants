@@ -17,13 +17,13 @@ public class TableController {
     private final CreateTable createTable;
     private final ListTables listTables;
 
-    private final ListTablesPerRestaurant listTablesPerRestaurant;
+
 
 
     public TableController(CreateTable createTable, ListTables listTables, ListTablesPerRestaurant listTablesPerRestaurant) {
         this.createTable = createTable;
         this.listTables = listTables;
-        this.listTablesPerRestaurant = listTablesPerRestaurant;
+        
     }
 
     @PostMapping
@@ -44,11 +44,6 @@ public class TableController {
                 )).collect(Collectors.toList());
     }
 
-    @GetMapping("/restaurantId/{id}/")
-    public List<TableDto> ListTablesPerRestaurant(@PathVariable UUID id){
-        return listTablesPerRestaurant.listTablesPerRestaurant(id).stream().map(t -> new TableDto(
-                t.getId(), t.getTableNumber(), t.getNumberOfChairs(), t.getRestaurant()
-        )).collect(Collectors.toList());
-    }
+
 
 }
