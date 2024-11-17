@@ -23,13 +23,13 @@ public class CustomerController {
 
     @PostMapping
     public CustomerDto createCustomer(@RequestBody CustomerDto dto){
-        Customer saved = createCustomer.createCustomer(new Customer(dto.name(), dto.cpf(), dto.email()));
-        return new CustomerDto(saved.getName(), saved.getCpf(), saved.getEmail());
+        Customer saved = createCustomer.createCustomer(new Customer(dto.getId(), dto.getName(), dto.getCpf(), dto.getEmail()));
+        return new CustomerDto(saved.getId(), saved.getName(), saved.getCpf(), saved.getEmail());
     }
 
     @GetMapping
     public List<CustomerDto> listCustomers(){
-        return listCustomers.getAllCustomers().stream().map(c -> new CustomerDto(c.getName(), c.getCpf(), c.getEmail())).collect(Collectors.toList());
+        return listCustomers.getAllCustomers().stream().map(c -> new CustomerDto(c.getId(), c.getName(), c.getCpf(), c.getEmail())).collect(Collectors.toList());
     }
 
 

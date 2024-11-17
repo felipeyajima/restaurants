@@ -1,8 +1,5 @@
 package com.yajima.restaurants.domain.entities.restaurant;
 
-import com.yajima.restaurants.domain.Address;
-import com.yajima.restaurants.domain.entities.table.Table;
-
 import java.time.LocalTime;
 import java.util.UUID;
 

@@ -9,8 +9,10 @@ public class TableEntityMapper {
 
     public TableEntity toEntity(Table table){
         return new TableEntity(
+                table.getId(),
                 table.getTableNumber(),
                 table.getNumberOfChairs(),
+                table.getStatus(),
                 new RestaurantEntity(
                         table.getRestaurant().getId(),
                         table.getRestaurant().getName(),
@@ -21,8 +23,6 @@ public class TableEntityMapper {
                         table.getRestaurant().getPostalCode(),
                         table.getRestaurant().getAddressNumber()
                 )
-
-
         );
     }
 
@@ -31,6 +31,7 @@ public class TableEntityMapper {
                 entity.getId(),
                 entity.getTableNumber(),
                 entity.getNumberOfChairs(),
+                entity.getStatus(),
                 new Restaurant(
                         entity.getRestaurantEntity().getId(),
                         entity.getRestaurantEntity().getName(),

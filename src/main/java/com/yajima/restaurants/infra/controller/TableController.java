@@ -31,15 +31,17 @@ public class TableController {
                 dto.getId(),
                 dto.getTableNumber(),
                 dto.getNumberOfChairs(),
+                dto.getStatus(),
                 dto.getRestaurant()
+
                 ));
-        return dto;
+        return new TableDto(saved.getId(), saved.getTableNumber(), saved.getNumberOfChairs(), saved.getStatus(), saved.getRestaurant());
     }
 
     @GetMapping
     public List<TableDto> listTables(){
         return listTables.getAllTables().stream().map(t -> new TableDto(
-                t.getId(), t.getTableNumber(), t.getNumberOfChairs(), t.getRestaurant()
+                t.getId(), t.getTableNumber(), t.getNumberOfChairs(), t.getStatus(), t.getRestaurant()
                 )).collect(Collectors.toList());
     }
 

@@ -7,6 +7,7 @@ public class CustomerEntityMapper {
 
     public CustomerEntity toEntity(Customer customer){
         return new CustomerEntity(
+                customer.getId(),
                 customer.getName(),
                 customer.getCpf(),
                 customer.getEmail()
@@ -15,6 +16,7 @@ public class CustomerEntityMapper {
 
     public Customer toDomain(CustomerEntity entity){
         return new Customer(
+                entity.getId(),
                 entity.getName(),
                 entity.getCpf(),
                 entity.getEmail()

@@ -1,10 +1,7 @@
 package com.yajima.restaurants.infra.controller;
 
-import com.yajima.restaurants.domain.entities.table.Table;
-
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.UUID;
 
 public class RestaurantDto{

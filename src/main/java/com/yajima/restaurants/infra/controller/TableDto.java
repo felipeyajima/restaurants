@@ -9,13 +9,16 @@ public class TableDto{
     private UUID id;
     private Integer tableNumber;
     private Integer numberOfChairs;
+    private String status;
     private Restaurant restaurant;
 
 
-    public TableDto(UUID id, Integer tableNumber, Integer numberOfChairs, Restaurant restaurant) {
+
+    public TableDto(UUID id, Integer tableNumber, Integer numberOfChairs, String status, Restaurant restaurant) {
         this.id = id;
         this.tableNumber = tableNumber;
         this.numberOfChairs = numberOfChairs;
+        this.status = status;
         this.restaurant = restaurant;
     }
 
@@ -49,5 +52,13 @@ public class TableDto{
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

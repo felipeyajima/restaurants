@@ -21,7 +21,8 @@ public class CustomerEntity {
     public CustomerEntity() {
     }
 
-    public CustomerEntity(String name, String cpf, String email) {
+    public CustomerEntity(UUID id, String name, String cpf, String email) {
+        this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.email = email;

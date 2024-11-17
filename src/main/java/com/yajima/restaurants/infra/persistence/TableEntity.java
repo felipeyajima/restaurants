@@ -16,7 +16,7 @@ public class TableEntity {
 
     private Integer tableNumber;
     private Integer numberOfChairs;
-
+    private String status;
 
     @ManyToOne
     @JoinColumn(name="restaurant_id")
@@ -26,10 +26,13 @@ public class TableEntity {
     public TableEntity() {
     }
 
-    public TableEntity(Integer tableNumber, Integer numberOfChairs, RestaurantEntity restaurantEntity) {
+    public TableEntity(UUID id,Integer tableNumber, Integer numberOfChairs, String status, RestaurantEntity restaurantEntity) {
+        this.id = id;
         this.tableNumber = tableNumber;
         this.numberOfChairs = numberOfChairs;
+        this.status = status;
         this.restaurantEntity = restaurantEntity;
+
     }
 
 

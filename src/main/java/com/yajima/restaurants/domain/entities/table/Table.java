@@ -7,17 +7,20 @@ import java.util.UUID;
 public class Table {
 
     private UUID id;
-
     private Integer tableNumber;
     private Integer numberOfChairs;
-
+    private String status;
     private Restaurant restaurant;
 
-    public Table(UUID id, Integer tableNumber, Integer numberOfChairs, Restaurant restaurant) {
+
+
+    public Table(UUID id, Integer tableNumber, Integer numberOfChairs, String status, Restaurant restaurant) {
         this.id = id;
         this.tableNumber = tableNumber;
         this.numberOfChairs = numberOfChairs;
+        this.status = status;
         this.restaurant = restaurant;
+
     }
 
     public UUID getId() {
@@ -50,5 +53,13 @@ public class Table {
 
     public void setNumberOfChairs(Integer numberOfChairs) {
         this.numberOfChairs = numberOfChairs;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

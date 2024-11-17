@@ -1,25 +1,40 @@
 package com.yajima.restaurants.domain.entities.customer;
 
+import java.util.UUID;
+
 public class Customer {
+    private UUID id;
     private String name;
     private String cpf;
     private String email;
 
-    public String getName() {
-        return name;
+
+    public Customer() {
     }
 
-
-    public Customer(String name, String cpf, String email){
+    public Customer(UUID id, String name, String cpf, String email){
+        this.id = id;
         this.name = name;
         this.email = email;
-
+/*
         if(cpf == null || !cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")){
             throw new IllegalArgumentException("invalid cpf!");
         }
+  */
         this.cpf = cpf;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;

@@ -46,7 +46,7 @@ public class RestaurantController {
 
         ));
 
-        return dto;
+        return new RestaurantDto(saved.getId(), saved.getName(), saved.getCnpj(), saved.getFoodType(), saved.getStartingHour(), saved.getFinishingHour(), saved.getPostalCode(), saved.getAddressNumber());
     }
 
     @GetMapping
@@ -67,7 +67,7 @@ public class RestaurantController {
     @GetMapping("/{id}/tables")
     public List<TableDto> ListTablesPerRestaurant(@PathVariable UUID id){
         return listTablesPerRestaurant.listTablesPerRestaurant(id).stream().map(t -> new TableDto(
-                t.getId(), t.getTableNumber(), t.getNumberOfChairs(), t.getRestaurant()
+                t.getId(), t.getTableNumber(), t.getNumberOfChairs(), t.getStatus(), t.getRestaurant()
         )).collect(Collectors.toList());
     }
 
@@ -99,7 +99,7 @@ public class RestaurantController {
         )).collect(Collectors.toList());
     }
     @GetMapping("/zipcode")
-    public List<RestaurantDto> ListRestaurantPerAddres(@RequestParam("zipcode") String address){
+    public List<RestaurantDto> ListRestaurantPerAddress(@RequestParam("zipcode") String address){
         return listRestaurantsPerAddress.listByAddress(address).stream().map(r -> new RestaurantDto(
                 r.getId(),
                 r.getName(),
