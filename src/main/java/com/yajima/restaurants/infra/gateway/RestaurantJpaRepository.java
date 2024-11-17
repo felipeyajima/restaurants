@@ -43,4 +43,14 @@ public class RestaurantJpaRepository implements RepositoryOfRestaurant {
     public List<Restaurant> listByFoodType(String foodType) {
         return repository.findByFoodType(foodType).stream().map(mapper::toDomain).collect(Collectors.toList());
     }
+
+    @Override
+    public List<Restaurant> listByName(String name) {
+        return repository.findByName(name).stream().map(mapper::toDomain).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Restaurant> listByAddress(String address) {
+        return repository.findByPostalCode(address).stream().map(mapper::toDomain).collect(Collectors.toList());
+    }
 }

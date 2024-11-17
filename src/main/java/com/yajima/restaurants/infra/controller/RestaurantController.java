@@ -1,8 +1,6 @@
 package com.yajima.restaurants.infra.controller;
 
-import com.yajima.restaurants.application.usecases.restaurant.CreateRestaurant;
-import com.yajima.restaurants.application.usecases.restaurant.ListRestaurants;
-import com.yajima.restaurants.application.usecases.restaurant.ListRestaurantsPerFoodType;
+import com.yajima.restaurants.application.usecases.restaurant.*;
 import com.yajima.restaurants.application.usecases.tables.ListTablesPerRestaurant;
 import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
 import org.springframework.web.bind.annotation.*;
@@ -21,11 +19,17 @@ public class RestaurantController {
     private final ListTablesPerRestaurant listTablesPerRestaurant;
     private final ListRestaurantsPerFoodType listRestaurantsPerFoodType;
 
-    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, ListTablesPerRestaurant listTablesPerRestaurant, ListRestaurantsPerFoodType listRestaurantsPerFoodType) {
+    private final ListRestaurantsPerName listRestaurantsPerName;
+
+    private final ListRestaurantsPerAddress listRestaurantsPerAddress;
+
+    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, ListTablesPerRestaurant listTablesPerRestaurant, ListRestaurantsPerFoodType listRestaurantsPerFoodType, ListRestaurantsPerName listRestaurantsPerName, ListRestaurantsPerAddress listRestaurantsPerAddress) {
         this.createRestaurant = createRestaurant;
         this.listRestaurants = listRestaurants;
         this.listTablesPerRestaurant = listTablesPerRestaurant;
         this.listRestaurantsPerFoodType = listRestaurantsPerFoodType;
+        this.listRestaurantsPerName = listRestaurantsPerName;
+        this.listRestaurantsPerAddress = listRestaurantsPerAddress;
     }
 
     @PostMapping
@@ -81,5 +85,31 @@ public class RestaurantController {
         )).collect(Collectors.toList());
     }
 
+    @GetMapping("/name")
+    public List<RestaurantDto> ListRestaurantPerName(@RequestParam("name") String name){
+        return listRestaurantsPerName.listByName(name).stream().map(r -> new RestaurantDto(
+                r.getId(),
+                r.getName(),
+                r.getCnpj(),
+                r.getFoodType(),
+                r.getStartingHour(),
+                r.getFinishingHour(),
+                r.getPostalCode(),
+                r.getAddressNumber()
+        )).collect(Collectors.toList());
+    }
+    @GetMapping("/zipcode")
+    public List<RestaurantDto> ListRestaurantPerAddres(@RequestParam("zipcode") String address){
+        return listRestaurantsPerAddress.listByAddress(address).stream().map(r -> new RestaurantDto(
+                r.getId(),
+                r.getName(),
+                r.getCnpj(),
+                r.getFoodType(),
+                r.getStartingHour(),
+                r.getFinishingHour(),
+                r.getPostalCode(),
+                r.getAddressNumber()
+        )).collect(Collectors.toList());
+    }
 
 }

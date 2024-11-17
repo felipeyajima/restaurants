@@ -10,4 +10,8 @@ public interface RestaurantRepository extends JpaRepository<RestaurantEntity, UU
 
     List<RestaurantEntity> findByFoodType(String foodType);
 
+    List<RestaurantEntity> findByPostalCode(String postalCode);
+
+    List<RestaurantEntity> findByName(String name);
+
 }

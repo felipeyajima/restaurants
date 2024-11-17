@@ -14,6 +14,10 @@ public interface RepositoryOfRestaurant {
 
     List<Restaurant> listByFoodType(String foodType);
 
+    List<Restaurant> listByName(String name);
+
+    List<Restaurant> listByAddress(String address);
+
 
     //public Restaurant findById(UUID id);
 
