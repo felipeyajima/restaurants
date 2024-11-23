@@ -13,4 +13,6 @@ public interface RepositoryOfCustomer {
 
     Customer findCustomer(UUID id);
 
+    void deleteCustomer(UUID id);
+
 }

@@ -18,6 +18,8 @@ public class RestaurantController {
 
     private final FindRestaurant findRestaurant;
 
+    private final DeleteRestaurant deleteRestaurant;
+
     private final ListTablesPerRestaurant listTablesPerRestaurant;
     private final ListRestaurantsPerFoodType listRestaurantsPerFoodType;
 
@@ -25,10 +27,11 @@ public class RestaurantController {
 
     private final ListRestaurantsPerAddress listRestaurantsPerAddress;
 
-    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, FindRestaurant findRestaurant, ListTablesPerRestaurant listTablesPerRestaurant, ListRestaurantsPerFoodType listRestaurantsPerFoodType, ListRestaurantsPerName listRestaurantsPerName, ListRestaurantsPerAddress listRestaurantsPerAddress) {
+    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, FindRestaurant findRestaurant, DeleteRestaurant deleteRestaurant, ListTablesPerRestaurant listTablesPerRestaurant, ListRestaurantsPerFoodType listRestaurantsPerFoodType, ListRestaurantsPerName listRestaurantsPerName, ListRestaurantsPerAddress listRestaurantsPerAddress) {
         this.createRestaurant = createRestaurant;
         this.listRestaurants = listRestaurants;
         this.findRestaurant = findRestaurant;
+        this.deleteRestaurant = deleteRestaurant;
         this.listTablesPerRestaurant = listTablesPerRestaurant;
         this.listRestaurantsPerFoodType = listRestaurantsPerFoodType;
         this.listRestaurantsPerName = listRestaurantsPerName;
@@ -72,6 +75,12 @@ public class RestaurantController {
         Restaurant restaurant = findRestaurant.findRestaurant(id);
         return new RestaurantDto(restaurant.getId(), restaurant.getName(), restaurant.getCnpj(), restaurant.getFoodType(), restaurant.getStartingHour(), restaurant.getFinishingHour(), restaurant.getPostalCode(), restaurant.getAddressNumber());
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteRestaurant(@PathVariable UUID id){
+        deleteRestaurant.deleteRestaurant(id);
+    }
+
 
     @GetMapping("/{id}/tables")
     public List<TableDto> ListTablesPerRestaurant(@PathVariable UUID id){

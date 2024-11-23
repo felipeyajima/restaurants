@@ -40,6 +40,11 @@ public class BookingJpaRepository implements RepositoryOfBooking {
     }
 
     @Override
+    public void deleteBooking(UUID id) {
+        this.repository.deleteById(id);
+    }
+
+    @Override
     public Booking welcomeCustomer(UUID id) {
         BookingEntity booking = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("booking not found"));
         booking.setStatus("ativated");

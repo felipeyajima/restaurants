@@ -47,6 +47,11 @@ public class RestaurantJpaRepository implements RepositoryOfRestaurant {
     }
 
     @Override
+    public void deleteRestaurant(UUID id) {
+        this.repository.deleteById(id);
+    }
+
+    @Override
     public List<Restaurant> listByFoodType(String foodType) {
         return repository.findByFoodType(foodType).stream().map(mapper::toDomain).collect(Collectors.toList());
     }

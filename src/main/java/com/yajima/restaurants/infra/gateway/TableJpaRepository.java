@@ -40,6 +40,11 @@ public class TableJpaRepository implements RepositoryOfTable {
     }
 
     @Override
+    public void deleteTable(UUID id) {
+        this.repository.deleteById(id);
+    }
+
+    @Override
     public List<Table> listTablesPerRestaurant(UUID id) {
         return repository.findByRestaurantId(id).stream().map(mapper::toDomain).collect(Collectors.toList());
     }

@@ -16,16 +16,19 @@ public class BookingController {
     private final ListBookings listBookings;
     private final FindBooking findBooking;
 
+    private final DeleteBooking deleteBooking;
+
     private final WelcomeCustomer welcomeCustomer;
 
     private final CancelBooking cancelBooking;
     private final FinishBooking finishBooking;
 
 
-    public BookingController(CreateBooking createBooking, ListBookings listBookings, FindBooking findBooking, WelcomeCustomer welcomeCustomer, CancelBooking cancelBooking, FinishBooking finishBooking) {
+    public BookingController(CreateBooking createBooking, ListBookings listBookings, FindBooking findBooking, DeleteBooking deleteBooking, WelcomeCustomer welcomeCustomer, CancelBooking cancelBooking, FinishBooking finishBooking) {
         this.createBooking = createBooking;
         this.listBookings = listBookings;
         this.findBooking = findBooking;
+        this.deleteBooking = deleteBooking;
         this.welcomeCustomer = welcomeCustomer;
         this.cancelBooking = cancelBooking;
         this.finishBooking = finishBooking;
@@ -51,18 +54,15 @@ public class BookingController {
         )).collect(Collectors.toList());
     }
 
-    /*
-    @PutMapping("{id}/welcome-customer")
-    public BookingDto validate(@PathVariable UUID id){
-
-    }
-
-     */
-
     @GetMapping("/{id}")
     public BookingDto findBooking(@PathVariable UUID id){
         Booking booking = findBooking.findBooking(id);
         return new BookingDto(booking.getId(), booking.getStatus(), booking.getBookingStart(), booking.getBookingFinish(), booking.getTable(), booking.getCustomer());
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBooking(@PathVariable UUID id){
+        deleteBooking.deleteBooking(id);
     }
 
     @PutMapping("/{id}/welcomeCustomer")

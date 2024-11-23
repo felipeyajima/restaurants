@@ -2,6 +2,7 @@ package com.yajima.restaurants.config;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfTable;
 import com.yajima.restaurants.application.usecases.tables.CreateTable;
+import com.yajima.restaurants.application.usecases.tables.DeleteTable;
 import com.yajima.restaurants.application.usecases.tables.FindTable;
 import com.yajima.restaurants.application.usecases.tables.ListTables;
 import com.yajima.restaurants.infra.gateway.TableEntityMapper;
@@ -28,6 +29,8 @@ public class TableConfig {
         return new FindTable(repositoryOfTable);
     }
 
+    @Bean
+    DeleteTable deleteTable(RepositoryOfTable repositoryOfTable){return new DeleteTable(repositoryOfTable);}
 
     @Bean
     TableJpaRepository tableJpaRepository(TableRepository repository, TableEntityMapper mapper){

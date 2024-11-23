@@ -1,9 +1,6 @@
 package com.yajima.restaurants.infra.controller;
 
-import com.yajima.restaurants.application.usecases.tables.CreateTable;
-import com.yajima.restaurants.application.usecases.tables.FindTable;
-import com.yajima.restaurants.application.usecases.tables.ListTables;
-import com.yajima.restaurants.application.usecases.tables.ListTablesPerRestaurant;
+import com.yajima.restaurants.application.usecases.tables.*;
 import com.yajima.restaurants.domain.entities.table.Table;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,14 +14,14 @@ public class TableController {
 
     private final CreateTable createTable;
     private final ListTables listTables;
-
     private final FindTable findTable;
+    private final DeleteTable deleteTable;
 
-
-    public TableController(CreateTable createTable, ListTables listTables, ListTablesPerRestaurant listTablesPerRestaurant, FindTable findTable) {
+    public TableController(CreateTable createTable, ListTables listTables, ListTablesPerRestaurant listTablesPerRestaurant, FindTable findTable, DeleteTable deleteTable) {
         this.createTable = createTable;
         this.listTables = listTables;
         this.findTable = findTable;
+        this.deleteTable = deleteTable;
     }
 
     @PostMapping
@@ -52,5 +49,11 @@ public class TableController {
         Table table = findTable.findTable(id);
         return new TableDto(table.getId(), table.getTableNumber() ,table.getNumberOfChairs() ,table.getStatus(), table.getRestaurant());
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteTable(@PathVariable UUID id){
+        deleteTable.deleteTable(id);
+    }
+
 
 }

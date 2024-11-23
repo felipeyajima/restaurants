@@ -15,6 +15,8 @@ public interface RepositoryOfRestaurant {
 
     Restaurant findRestaurant(UUID id);
 
+    void deleteRestaurant(UUID id);
+
     List<Restaurant> listByFoodType(String foodType);
 
     List<Restaurant> listByName(String name);

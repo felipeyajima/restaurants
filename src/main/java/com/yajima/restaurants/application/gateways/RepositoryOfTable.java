@@ -13,6 +13,8 @@ public interface RepositoryOfTable {
 
     Table findTable(UUID id);
 
+    void deleteTable(UUID id);
+
     List<Table> listTablesPerRestaurant(UUID id);
 
 }

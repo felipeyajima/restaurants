@@ -1,6 +1,7 @@
 package com.yajima.restaurants.infra.controller;
 
 import com.yajima.restaurants.application.usecases.customer.CreateCustomer;
+import com.yajima.restaurants.application.usecases.customer.DeleteCustomer;
 import com.yajima.restaurants.application.usecases.customer.FindCustomer;
 import com.yajima.restaurants.application.usecases.customer.ListCustomers;
 import com.yajima.restaurants.domain.entities.customer.Customer;
@@ -16,13 +17,14 @@ public class CustomerController {
 
     private final CreateCustomer createCustomer;
     private final ListCustomers listCustomers;
-
     private final FindCustomer findCustomer;
+    private final DeleteCustomer deleteCustomer;
 
-    public CustomerController(CreateCustomer createCustomer, ListCustomers listCustomers, FindCustomer findCustomer) {
+    public CustomerController(CreateCustomer createCustomer, ListCustomers listCustomers, FindCustomer findCustomer, DeleteCustomer deleteCustomer) {
         this.createCustomer = createCustomer;
         this.listCustomers = listCustomers;
         this.findCustomer = findCustomer;
+        this.deleteCustomer = deleteCustomer;
     }
 
 
@@ -43,4 +45,8 @@ public class CustomerController {
         return new CustomerDto(customer.getId(), customer.getName(), customer.getCpf(), customer.getEmail());
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteCustomer(@PathVariable UUID id){
+        deleteCustomer.deleteCustomer(id);
+    }
 }

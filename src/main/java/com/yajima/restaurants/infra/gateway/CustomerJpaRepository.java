@@ -38,5 +38,10 @@ public class CustomerJpaRepository implements RepositoryOfCustomer {
         return mapper.toDomain(customer);
     }
 
+    @Override
+    public void deleteCustomer(UUID id) {
+        this.repository.deleteById(id);
+    }
+
 
 }

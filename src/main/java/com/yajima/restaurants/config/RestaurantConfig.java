@@ -28,6 +28,11 @@ public class RestaurantConfig {
     }
 
     @Bean
+    DeleteRestaurant deleteRestaurant(RepositoryOfRestaurant repositoryOfRestaurant){
+        return new DeleteRestaurant(repositoryOfRestaurant);
+    }
+
+    @Bean
     ListTablesPerRestaurant listTablesPerRestaurant(RepositoryOfTable repositoryOfTable){
         return new ListTablesPerRestaurant(repositoryOfTable);
     }

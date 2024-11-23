@@ -2,6 +2,7 @@ package com.yajima.restaurants.config;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfCustomer;
 import com.yajima.restaurants.application.usecases.customer.CreateCustomer;
+import com.yajima.restaurants.application.usecases.customer.DeleteCustomer;
 import com.yajima.restaurants.application.usecases.customer.FindCustomer;
 import com.yajima.restaurants.application.usecases.customer.ListCustomers;
 import com.yajima.restaurants.infra.gateway.CustomerEntityMapper;
@@ -28,6 +29,11 @@ public class CustomerConfig {
     @Bean
     FindCustomer findCustomer(RepositoryOfCustomer repositoryOfCustomer){
         return new FindCustomer(repositoryOfCustomer);
+    }
+
+    @Bean
+    DeleteCustomer deleteCustomer(RepositoryOfCustomer repositoryOfCustomer){
+        return new DeleteCustomer(repositoryOfCustomer);
     }
 
     @Bean

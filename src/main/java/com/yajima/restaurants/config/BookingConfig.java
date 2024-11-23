@@ -5,6 +5,7 @@ import com.yajima.restaurants.application.usecases.booking.*;
 import com.yajima.restaurants.infra.gateway.BookingEntityMapper;
 import com.yajima.restaurants.infra.gateway.BookingJpaRepository;
 import com.yajima.restaurants.infra.persistence.BookingRepository;
+import org.hibernate.sql.Delete;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,6 +22,9 @@ public class BookingConfig {
     FindBooking findBooking(RepositoryOfBooking repositoryOfBooking){
         return new FindBooking(repositoryOfBooking);
     }
+
+    @Bean
+    DeleteBooking deleteBooking(RepositoryOfBooking repositoryOfBooking){return new DeleteBooking(repositoryOfBooking);}
 
     @Bean
     WelcomeCustomer welcomeCustomer(RepositoryOfBooking repositoryOfBooking){return new WelcomeCustomer(repositoryOfBooking);}
