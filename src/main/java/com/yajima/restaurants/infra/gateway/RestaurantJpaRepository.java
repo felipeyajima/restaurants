@@ -9,6 +9,7 @@ import com.yajima.restaurants.infra.persistence.RestaurantRepository;
 
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 
@@ -37,6 +38,12 @@ public class RestaurantJpaRepository implements RepositoryOfRestaurant {
                 .map(mapper::toDomain)
                 .collect(Collectors.toList());
 
+    }
+
+    @Override
+    public Restaurant findRestaurant(UUID id) {
+        RestaurantEntity restaurant = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("restaurant not found"));
+        return mapper.toDomain(restaurant);
     }
 
     @Override

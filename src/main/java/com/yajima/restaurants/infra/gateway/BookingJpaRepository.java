@@ -6,6 +6,7 @@ import com.yajima.restaurants.infra.persistence.BookingEntity;
 import com.yajima.restaurants.infra.persistence.BookingRepository;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class BookingJpaRepository implements RepositoryOfBooking {
@@ -30,5 +31,11 @@ public class BookingJpaRepository implements RepositoryOfBooking {
     @Override
     public List<Booking> listEverything() {
         return repository.findAll().stream().map(mapper::toDomain).collect(Collectors.toList());
+    }
+
+    @Override
+    public Booking findBooking(UUID id) {
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("booking not found"));
+        return mapper.toDomain(booking);
     }
 }

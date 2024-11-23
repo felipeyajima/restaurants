@@ -34,6 +34,12 @@ public class TableJpaRepository implements RepositoryOfTable {
     }
 
     @Override
+    public Table findTable(UUID id) {
+        TableEntity table = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("table not found"));
+        return mapper.toDomain(table);
+    }
+
+    @Override
     public List<Table> listTablesPerRestaurant(UUID id) {
         return repository.findByRestaurantId(id).stream().map(mapper::toDomain).collect(Collectors.toList());
     }

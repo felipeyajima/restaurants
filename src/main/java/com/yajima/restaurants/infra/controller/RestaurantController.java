@@ -16,6 +16,8 @@ public class RestaurantController {
     private final CreateRestaurant createRestaurant;
     private final ListRestaurants listRestaurants;
 
+    private final FindRestaurant findRestaurant;
+
     private final ListTablesPerRestaurant listTablesPerRestaurant;
     private final ListRestaurantsPerFoodType listRestaurantsPerFoodType;
 
@@ -23,9 +25,10 @@ public class RestaurantController {
 
     private final ListRestaurantsPerAddress listRestaurantsPerAddress;
 
-    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, ListTablesPerRestaurant listTablesPerRestaurant, ListRestaurantsPerFoodType listRestaurantsPerFoodType, ListRestaurantsPerName listRestaurantsPerName, ListRestaurantsPerAddress listRestaurantsPerAddress) {
+    public RestaurantController(CreateRestaurant createRestaurant, ListRestaurants listRestaurants, FindRestaurant findRestaurant, ListTablesPerRestaurant listTablesPerRestaurant, ListRestaurantsPerFoodType listRestaurantsPerFoodType, ListRestaurantsPerName listRestaurantsPerName, ListRestaurantsPerAddress listRestaurantsPerAddress) {
         this.createRestaurant = createRestaurant;
         this.listRestaurants = listRestaurants;
+        this.findRestaurant = findRestaurant;
         this.listTablesPerRestaurant = listTablesPerRestaurant;
         this.listRestaurantsPerFoodType = listRestaurantsPerFoodType;
         this.listRestaurantsPerName = listRestaurantsPerName;
@@ -62,6 +65,12 @@ public class RestaurantController {
                         r.getPostalCode(),
                         r.getAddressNumber()
                         )).collect(Collectors.toList());
+    }
+
+    @GetMapping("/{id}")
+    public RestaurantDto findRestaurant(@PathVariable UUID id){
+        Restaurant restaurant = findRestaurant.findRestaurant(id);
+        return new RestaurantDto(restaurant.getId(), restaurant.getName(), restaurant.getCnpj(), restaurant.getFoodType(), restaurant.getStartingHour(), restaurant.getFinishingHour(), restaurant.getPostalCode(), restaurant.getAddressNumber());
     }
 
     @GetMapping("/{id}/tables")

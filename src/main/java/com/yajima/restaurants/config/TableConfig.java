@@ -2,6 +2,7 @@ package com.yajima.restaurants.config;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfTable;
 import com.yajima.restaurants.application.usecases.tables.CreateTable;
+import com.yajima.restaurants.application.usecases.tables.FindTable;
 import com.yajima.restaurants.application.usecases.tables.ListTables;
 import com.yajima.restaurants.infra.gateway.TableEntityMapper;
 import com.yajima.restaurants.infra.gateway.TableJpaRepository;
@@ -20,6 +21,11 @@ public class TableConfig {
     @Bean
     ListTables listTables(RepositoryOfTable repositoryOfTable){
         return new ListTables(repositoryOfTable);
+    }
+
+    @Bean
+    FindTable findTable(RepositoryOfTable repositoryOfTable){
+        return new FindTable(repositoryOfTable);
     }
 
 

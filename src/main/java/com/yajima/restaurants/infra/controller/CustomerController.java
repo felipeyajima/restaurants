@@ -1,11 +1,13 @@
 package com.yajima.restaurants.infra.controller;
 
 import com.yajima.restaurants.application.usecases.customer.CreateCustomer;
+import com.yajima.restaurants.application.usecases.customer.FindCustomer;
 import com.yajima.restaurants.application.usecases.customer.ListCustomers;
 import com.yajima.restaurants.domain.entities.customer.Customer;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
@@ -15,9 +17,12 @@ public class CustomerController {
     private final CreateCustomer createCustomer;
     private final ListCustomers listCustomers;
 
-    public CustomerController(CreateCustomer createCustomer, ListCustomers listCustomers) {
+    private final FindCustomer findCustomer;
+
+    public CustomerController(CreateCustomer createCustomer, ListCustomers listCustomers, FindCustomer findCustomer) {
         this.createCustomer = createCustomer;
         this.listCustomers = listCustomers;
+        this.findCustomer = findCustomer;
     }
 
 
@@ -32,5 +37,10 @@ public class CustomerController {
         return listCustomers.getAllCustomers().stream().map(c -> new CustomerDto(c.getId(), c.getName(), c.getCpf(), c.getEmail())).collect(Collectors.toList());
     }
 
+    @GetMapping("/{id}")
+    public CustomerDto findCustomer(@PathVariable UUID id){
+        Customer customer = findCustomer.findCustomer(id);
+        return new CustomerDto(customer.getId(), customer.getName(), customer.getCpf(), customer.getEmail());
+    }
 
 }

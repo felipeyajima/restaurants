@@ -11,6 +11,8 @@ public interface RepositoryOfTable {
 
     List<Table> listEverything();
 
+    Table findTable(UUID id);
+
     List<Table> listTablesPerRestaurant(UUID id);
 
 }

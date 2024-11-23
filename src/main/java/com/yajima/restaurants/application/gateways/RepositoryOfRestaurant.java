@@ -4,6 +4,7 @@ package com.yajima.restaurants.application.gateways;
 import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public interface RepositoryOfRestaurant {
@@ -11,6 +12,8 @@ public interface RepositoryOfRestaurant {
     Restaurant createRestaurant(Restaurant restaurant);
 
     List<Restaurant> listEveryting();
+
+    Restaurant findRestaurant(UUID id);
 
     List<Restaurant> listByFoodType(String foodType);
 

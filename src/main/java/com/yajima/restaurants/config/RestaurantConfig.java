@@ -23,6 +23,11 @@ public class RestaurantConfig {
     }
 
     @Bean
+    FindRestaurant findRestaurant(RepositoryOfRestaurant repositoryOfRestaurant){
+        return new FindRestaurant(repositoryOfRestaurant);
+    }
+
+    @Bean
     ListTablesPerRestaurant listTablesPerRestaurant(RepositoryOfTable repositoryOfTable){
         return new ListTablesPerRestaurant(repositoryOfTable);
     }

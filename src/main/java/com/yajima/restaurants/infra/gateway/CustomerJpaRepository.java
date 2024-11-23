@@ -6,6 +6,7 @@ import com.yajima.restaurants.infra.persistence.CustomerEntity;
 import com.yajima.restaurants.infra.persistence.CustomerRepository;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 public class CustomerJpaRepository implements RepositoryOfCustomer {
@@ -31,8 +32,11 @@ public class CustomerJpaRepository implements RepositoryOfCustomer {
         return repository.findAll().stream().map(mapper::toDomain).collect(Collectors.toList());
     }
 
-
-
+    @Override
+    public Customer findCustomer(UUID id) {
+        CustomerEntity customer = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("customer not found"));
+        return mapper.toDomain(customer);
+    }
 
 
 }
