@@ -38,4 +38,30 @@ public class BookingJpaRepository implements RepositoryOfBooking {
         BookingEntity booking = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("booking not found"));
         return mapper.toDomain(booking);
     }
+
+    @Override
+    public Booking welcomeCustomer(UUID id) {
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("booking not found"));
+        booking.setStatus("ativated");
+        repository.save(booking);
+        return mapper.toDomain(booking);
+    }
+
+    @Override
+    public Booking cancelBooking(UUID id) {
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("booking not found"));
+        booking.setStatus("canceled");
+        repository.save(booking);
+        return mapper.toDomain(booking);
+    }
+
+    @Override
+    public Booking finishBooking(UUID id) {
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new IllegalArgumentException("booking not found"));
+        booking.setStatus("finished");
+        repository.save(booking);
+        return mapper.toDomain(booking);
+    }
+
+
 }

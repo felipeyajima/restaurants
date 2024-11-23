@@ -13,5 +13,11 @@ public interface RepositoryOfBooking {
 
     Booking findBooking(UUID id);
 
+    Booking welcomeCustomer(UUID id);
+
+    Booking cancelBooking(UUID id);
+
+    Booking finishBooking(UUID id);
+
 
 }

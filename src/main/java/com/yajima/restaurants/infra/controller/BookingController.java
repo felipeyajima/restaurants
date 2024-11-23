@@ -1,8 +1,6 @@
 package com.yajima.restaurants.infra.controller;
 
-import com.yajima.restaurants.application.usecases.booking.CreateBooking;
-import com.yajima.restaurants.application.usecases.booking.FindBooking;
-import com.yajima.restaurants.application.usecases.booking.ListBookings;
+import com.yajima.restaurants.application.usecases.booking.*;
 import com.yajima.restaurants.domain.entities.booking.Booking;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,11 +16,19 @@ public class BookingController {
     private final ListBookings listBookings;
     private final FindBooking findBooking;
 
+    private final WelcomeCustomer welcomeCustomer;
 
-    public BookingController(CreateBooking createBooking, ListBookings listBookings, FindBooking findBooking) {
+    private final CancelBooking cancelBooking;
+    private final FinishBooking finishBooking;
+
+
+    public BookingController(CreateBooking createBooking, ListBookings listBookings, FindBooking findBooking, WelcomeCustomer welcomeCustomer, CancelBooking cancelBooking, FinishBooking finishBooking) {
         this.createBooking = createBooking;
         this.listBookings = listBookings;
         this.findBooking = findBooking;
+        this.welcomeCustomer = welcomeCustomer;
+        this.cancelBooking = cancelBooking;
+        this.finishBooking = finishBooking;
     }
     @PostMapping
     public BookingDto createBooking(@RequestBody BookingDto dto){
@@ -56,6 +62,25 @@ public class BookingController {
     @GetMapping("/{id}")
     public BookingDto findBooking(@PathVariable UUID id){
         Booking booking = findBooking.findBooking(id);
+        return new BookingDto(booking.getId(), booking.getStatus(), booking.getBookingStart(), booking.getBookingFinish(), booking.getTable(), booking.getCustomer());
+    }
+
+    @PutMapping("/{id}/welcomeCustomer")
+    public BookingDto welcomeCustomer(@PathVariable UUID id){
+        Booking booking = welcomeCustomer.welcomeCustomer(id);
+        return new BookingDto(booking.getId(), booking.getStatus(), booking.getBookingStart(), booking.getBookingFinish(), booking.getTable(), booking.getCustomer());
+    }
+
+    @PutMapping("/{id}/cancelBooking")
+    public BookingDto cancelBooking(@PathVariable UUID id){
+        Booking booking = cancelBooking.cancelBooking(id);
+        return new BookingDto(booking.getId(), booking.getStatus(), booking.getBookingStart(), booking.getBookingFinish(), booking.getTable(), booking.getCustomer());
+    }
+
+
+    @PutMapping("/{id}/finishBooking")
+    public BookingDto finishBooking(@PathVariable UUID id){
+        Booking booking = finishBooking.finishBooking(id);
         return new BookingDto(booking.getId(), booking.getStatus(), booking.getBookingStart(), booking.getBookingFinish(), booking.getTable(), booking.getCustomer());
     }
 

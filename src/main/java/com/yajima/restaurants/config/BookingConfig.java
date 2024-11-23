@@ -1,9 +1,7 @@
 package com.yajima.restaurants.config;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfBooking;
-import com.yajima.restaurants.application.usecases.booking.CreateBooking;
-import com.yajima.restaurants.application.usecases.booking.FindBooking;
-import com.yajima.restaurants.application.usecases.booking.ListBookings;
+import com.yajima.restaurants.application.usecases.booking.*;
 import com.yajima.restaurants.infra.gateway.BookingEntityMapper;
 import com.yajima.restaurants.infra.gateway.BookingJpaRepository;
 import com.yajima.restaurants.infra.persistence.BookingRepository;
@@ -23,6 +21,15 @@ public class BookingConfig {
     FindBooking findBooking(RepositoryOfBooking repositoryOfBooking){
         return new FindBooking(repositoryOfBooking);
     }
+
+    @Bean
+    WelcomeCustomer welcomeCustomer(RepositoryOfBooking repositoryOfBooking){return new WelcomeCustomer(repositoryOfBooking);}
+
+    @Bean
+    CancelBooking cancelBooking(RepositoryOfBooking repositoryOfBooking){return new CancelBooking(repositoryOfBooking);}
+
+    @Bean
+    FinishBooking finishBooking(RepositoryOfBooking repositoryOfBooking){return  new FinishBooking(repositoryOfBooking);}
 
     @Bean
     BookingJpaRepository bookingJpaRepository(BookingRepository repository, BookingEntityMapper mapper){
