@@ -4,7 +4,7 @@ package com.yajima.restaurants.infra.gateway;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfRestaurant;
 import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
-import com.yajima.restaurants.infra.controller.exceptions.ControllerNotFoundException;
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
 import com.yajima.restaurants.infra.persistence.RestaurantEntity;
 import com.yajima.restaurants.infra.persistence.RestaurantRepository;
 
@@ -43,7 +43,7 @@ public class RestaurantJpaRepository implements RepositoryOfRestaurant {
 
     @Override
     public Restaurant findRestaurant(UUID id) {
-        RestaurantEntity restaurant = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("restaurant not found"));
+        RestaurantEntity restaurant = repository.findById(id).orElseThrow(()-> new ControllerSystemException("restaurant not found"));
         return mapper.toDomain(restaurant);
     }
 

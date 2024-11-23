@@ -2,7 +2,7 @@ package com.yajima.restaurants.infra.gateway;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfReview;
 import com.yajima.restaurants.domain.entities.review.Review;
-import com.yajima.restaurants.infra.controller.exceptions.ControllerNotFoundException;
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
 import com.yajima.restaurants.infra.persistence.ReviewEntity;
 import com.yajima.restaurants.infra.persistence.ReviewRepository;
 
@@ -35,7 +35,7 @@ public class ReviewJpaRepository implements RepositoryOfReview {
 
     @Override
     public Review findReview(UUID id) {
-        ReviewEntity review = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("review not found"));
+        ReviewEntity review = repository.findById(id).orElseThrow(()-> new ControllerSystemException("review not found"));
         return mapper.toDomain(review);
     }
 

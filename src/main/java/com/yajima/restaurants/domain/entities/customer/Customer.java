@@ -1,5 +1,7 @@
 package com.yajima.restaurants.domain.entities.customer;
 
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
+
 import java.util.UUID;
 
 public class Customer {
@@ -16,11 +18,11 @@ public class Customer {
         this.id = id;
         this.name = name;
         this.email = email;
-/*
+
         if(cpf == null || !cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")){
-            throw new IllegalArgumentException("invalid cpf!");
+            throw new ControllerSystemException("invalid cpf!");
         }
-  */
+
         this.cpf = cpf;
     }
 

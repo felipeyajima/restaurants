@@ -2,7 +2,7 @@ package com.yajima.restaurants.infra.gateway;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfTable;
 import com.yajima.restaurants.domain.entities.table.Table;
-import com.yajima.restaurants.infra.controller.exceptions.ControllerNotFoundException;
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
 import com.yajima.restaurants.infra.persistence.TableEntity;
 import com.yajima.restaurants.infra.persistence.TableRepository;
 
@@ -36,7 +36,7 @@ public class TableJpaRepository implements RepositoryOfTable {
 
     @Override
     public Table findTable(UUID id) {
-        TableEntity table = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("table not found"));
+        TableEntity table = repository.findById(id).orElseThrow(()-> new ControllerSystemException("table not found"));
         return mapper.toDomain(table);
     }
 

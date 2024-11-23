@@ -2,7 +2,7 @@ package com.yajima.restaurants.infra.gateway;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfCustomer;
 import com.yajima.restaurants.domain.entities.customer.Customer;
-import com.yajima.restaurants.infra.controller.exceptions.ControllerNotFoundException;
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
 import com.yajima.restaurants.infra.persistence.CustomerEntity;
 import com.yajima.restaurants.infra.persistence.CustomerRepository;
 
@@ -35,7 +35,7 @@ public class CustomerJpaRepository implements RepositoryOfCustomer {
 
     @Override
     public Customer findCustomer(UUID id) {
-        CustomerEntity customer = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("customer not found"));
+        CustomerEntity customer = repository.findById(id).orElseThrow(()-> new ControllerSystemException("customer not found"));
         return mapper.toDomain(customer);
     }
 

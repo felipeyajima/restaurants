@@ -2,7 +2,7 @@ package com.yajima.restaurants.infra.gateway;
 
 import com.yajima.restaurants.application.gateways.RepositoryOfBooking;
 import com.yajima.restaurants.domain.entities.booking.Booking;
-import com.yajima.restaurants.infra.controller.exceptions.ControllerNotFoundException;
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
 import com.yajima.restaurants.infra.persistence.BookingEntity;
 import com.yajima.restaurants.infra.persistence.BookingRepository;
 
@@ -25,6 +25,7 @@ public class BookingJpaRepository implements RepositoryOfBooking {
     @Override
     public Booking createBooking(Booking booking) {
         BookingEntity entity = mapper.toEntity(booking);
+        entity.setStatus("reserved");
         repository.save(entity);
         return mapper.toDomain(entity);
     }
@@ -36,7 +37,7 @@ public class BookingJpaRepository implements RepositoryOfBooking {
 
     @Override
     public Booking findBooking(UUID id) {
-        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("booking not found"));
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerSystemException("booking not found"));
         return mapper.toDomain(booking);
     }
 
@@ -47,7 +48,7 @@ public class BookingJpaRepository implements RepositoryOfBooking {
 
     @Override
     public Booking welcomeCustomer(UUID id) {
-        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("booking not found"));
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerSystemException("booking not found"));
         booking.setStatus("ativated");
         repository.save(booking);
         return mapper.toDomain(booking);
@@ -55,7 +56,7 @@ public class BookingJpaRepository implements RepositoryOfBooking {
 
     @Override
     public Booking cancelBooking(UUID id) {
-        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("booking not found"));
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerSystemException("booking not found"));
         booking.setStatus("canceled");
         repository.save(booking);
         return mapper.toDomain(booking);
@@ -63,7 +64,7 @@ public class BookingJpaRepository implements RepositoryOfBooking {
 
     @Override
     public Booking finishBooking(UUID id) {
-        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerNotFoundException("booking not found"));
+        BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerSystemException("booking not found"));
         booking.setStatus("finished");
         repository.save(booking);
         return mapper.toDomain(booking);
