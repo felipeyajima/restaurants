@@ -7,8 +7,6 @@ import com.yajima.restaurants.domain.entities.review.Review;
 import com.yajima.restaurants.domain.entities.table.Table;
 import com.yajima.restaurants.infra.persistence.*;
 
-import java.time.LocalTime;
-
 public class ReviewEntityMapper {
 
     public ReviewEntity toEntity(Review review){
@@ -35,7 +33,8 @@ public class ReviewEntityMapper {
                                         review.getBooking().getTable().getRestaurant().getStartingHour(),
                                         review.getBooking().getTable().getRestaurant().getFinishingHour(),
                                         review.getBooking().getTable().getRestaurant().getPostalCode(),
-                                        review.getBooking().getTable().getRestaurant().getAddressNumber()
+                                        review.getBooking().getTable().getRestaurant().getAddressNumber(),
+                                        review.getBooking().getTable().getRestaurant().getOpenOnlyOnBusinessDay()
                                 )
                         ), new CustomerEntity(
                                 review.getBooking().getCustomer().getId(),
@@ -73,7 +72,8 @@ public class ReviewEntityMapper {
                                         entity.getBookingEntity().getTableEntity().getRestaurantEntity().getStartingHour(),
                                         entity.getBookingEntity().getTableEntity().getRestaurantEntity().getFinishingHour(),
                                         entity.getBookingEntity().getTableEntity().getRestaurantEntity().getPostalCode(),
-                                        entity.getBookingEntity().getTableEntity().getRestaurantEntity().getAddressNumber()
+                                        entity.getBookingEntity().getTableEntity().getRestaurantEntity().getAddressNumber(),
+                                        entity.getBookingEntity().getTableEntity().getRestaurantEntity().getOpenOnlyOnBusinessDay()
                                 )
                         ), new Customer(
                                 entity.getBookingEntity().getCustomerEntity().getId(),

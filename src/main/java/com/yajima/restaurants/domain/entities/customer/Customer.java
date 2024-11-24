@@ -17,6 +17,11 @@ public class Customer {
     public Customer(UUID id, String name, String cpf, String email){
         this.id = id;
         this.name = name;
+
+        if(email == null || !email.contains("@")){
+            throw new ControllerSystemException("invalid email");
+        }
+
         this.email = email;
 
         if(cpf == null || !cpf.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")){

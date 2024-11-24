@@ -11,11 +11,11 @@ public class RestaurantTest {
     @Test
     public void shouldntSaveCnpjWithInvalidFormat(){
         Assertions.assertThrows(ControllerSystemException.class,
-                () -> new Restaurant(UUID.randomUUID(), "Crazy Restaurant", "11.222.333//--5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12));
+                () -> new Restaurant(UUID.randomUUID(), "Restaurant", "11.222.333//--5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12, true));
         Assertions.assertThrows(ControllerSystemException.class,
-                () -> new Restaurant(UUID.randomUUID(),"Crazy Restaurant","11222333555566", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12));
+                () -> new Restaurant(UUID.randomUUID(),"Restaurant","11222333555566", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12, true));
         Assertions.assertThrows(ControllerSystemException.class,
-                () -> new Restaurant(UUID.randomUUID(),"Crazy Restaurant","", "Chinese", LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12));
+                () -> new Restaurant(UUID.randomUUID(),"Restaurant","", "Chinese", LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12, true));
 
     }
 
@@ -23,11 +23,11 @@ public class RestaurantTest {
     @Test
     public void shouldntSavePostalCodeWithInvalidFormat(){
         Assertions.assertThrows(ControllerSystemException.class,
-                () -> new Restaurant(UUID.randomUUID(), "Crazy Restaurant", "11.222.333/5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12));
+                () -> new Restaurant(UUID.randomUUID(), "Restaurant", "11.222.333/5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "0000000", 12, true));
         Assertions.assertThrows(ControllerSystemException.class,
-                () -> new Restaurant(UUID.randomUUID(),"Crazy Restaurant","11.222.333/5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "00000-00", 12));
+                () -> new Restaurant(UUID.randomUUID(),"Restaurant","11.222.333/5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "00000-00", 12, true));
         Assertions.assertThrows(ControllerSystemException.class,
-                () -> new Restaurant(UUID.randomUUID(),"Crazy Restaurant","11.222.333/5555-66", "Chinese", LocalTime.parse("15:32"), LocalTime.parse("15:32"), "", 12));
+                () -> new Restaurant(UUID.randomUUID(),"Restaurant","11.222.333/5555-66", "Chinese", LocalTime.parse("15:32"), LocalTime.parse("15:32"), "", 12, true));
 
     }
 

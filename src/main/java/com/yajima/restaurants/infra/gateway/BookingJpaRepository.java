@@ -49,9 +49,15 @@ public class BookingJpaRepository implements RepositoryOfBooking {
     @Override
     public Booking welcomeCustomer(UUID id) {
         BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerSystemException("booking not found"));
-        booking.setStatus("ativated");
-        repository.save(booking);
-        return mapper.toDomain(booking);
+
+        if(booking.getStatus().equals("reserved")){
+            booking.setStatus("activated");
+            repository.save(booking);
+            return mapper.toDomain(booking);
+        } else {
+            throw new ControllerSystemException("The status of Booking is not 'reserved'");
+        }
+
     }
 
     @Override
@@ -65,9 +71,14 @@ public class BookingJpaRepository implements RepositoryOfBooking {
     @Override
     public Booking finishBooking(UUID id) {
         BookingEntity booking = repository.findById(id).orElseThrow(()-> new ControllerSystemException("booking not found"));
-        booking.setStatus("finished");
-        repository.save(booking);
-        return mapper.toDomain(booking);
+
+        if(booking.getStatus().equals("activated")){
+            booking.setStatus("finished");
+            repository.save(booking);
+            return mapper.toDomain(booking);
+        } else {
+            throw new ControllerSystemException("The status of Booking is not 'activated'");
+        }
     }
 
 

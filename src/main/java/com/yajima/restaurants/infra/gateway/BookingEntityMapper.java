@@ -30,7 +30,8 @@ public class BookingEntityMapper {
                                     booking.getTable().getRestaurant().getStartingHour(),
                                     booking.getTable().getRestaurant().getFinishingHour(),
                                     booking.getTable().getRestaurant().getPostalCode(),
-                                    booking.getTable().getRestaurant().getAddressNumber()
+                                    booking.getTable().getRestaurant().getAddressNumber(),
+                                    booking.getTable().getRestaurant().getOpenOnlyOnBusinessDay()
                             )
                 ),
                 new CustomerEntity(
@@ -61,7 +62,8 @@ public class BookingEntityMapper {
                                     entity.getTableEntity().getRestaurantEntity().getStartingHour(),
                                     entity.getTableEntity().getRestaurantEntity().getFinishingHour(),
                                     entity.getTableEntity().getRestaurantEntity().getPostalCode(),
-                                    entity.getTableEntity().getRestaurantEntity().getAddressNumber()
+                                    entity.getTableEntity().getRestaurantEntity().getAddressNumber(),
+                                    entity.getTableEntity().getRestaurantEntity().getOpenOnlyOnBusinessDay()
                                     )
                 ),
                 new Customer(

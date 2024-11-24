@@ -15,7 +15,8 @@ public class RestaurantEntityMapper {
                 restaurant.getStartingHour(),
                 restaurant.getFinishingHour(),
                 restaurant.getPostalCode(),
-                restaurant.getAddressNumber()
+                restaurant.getAddressNumber(),
+                restaurant.getOpenOnlyOnBusinessDay()
                 );
 
     }
@@ -29,7 +30,8 @@ public class RestaurantEntityMapper {
                 entity.getStartingHour(),
                 entity.getFinishingHour(),
                 entity.getPostalCode(),
-                entity.getAddressNumber()
+                entity.getAddressNumber(),
+                entity.getOpenOnlyOnBusinessDay()
                 );
     }
 

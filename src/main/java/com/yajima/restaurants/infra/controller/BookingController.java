@@ -67,7 +67,8 @@ public class BookingController {
                                 table.getRestaurant().getStartingHour(),
                                 table.getRestaurant().getFinishingHour(),
                                 table.getRestaurant().getPostalCode(),
-                                table.getRestaurant().getAddressNumber()
+                                table.getRestaurant().getAddressNumber(),
+                                table.getRestaurant().getOpenOnlyOnBusinessDay()
                         )
                 ),
                 new Customer(

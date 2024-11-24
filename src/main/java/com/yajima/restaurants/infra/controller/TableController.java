@@ -6,7 +6,6 @@ import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
 import com.yajima.restaurants.domain.entities.table.Table;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -47,7 +46,8 @@ public class TableController {
                         restaurant.getStartingHour(),
                         restaurant.getFinishingHour(),
                         restaurant.getPostalCode(),
-                        restaurant.getAddressNumber()
+                        restaurant.getAddressNumber(),
+                        restaurant.getOpenOnlyOnBusinessDay()
                 )
                 ));
 

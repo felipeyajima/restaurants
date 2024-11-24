@@ -48,11 +48,12 @@ public class RestaurantController {
                 dto.getStartingHour(),
                 dto.getFinishingHour(),
                 dto.getPostalCode(),
-                dto.getAddressNumber()
+                dto.getAddressNumber(),
+                dto.getOpenOnlyOnBusinessDay()
 
         ));
 
-        return new RestaurantDto(saved.getId(), saved.getName(), saved.getCnpj(), saved.getFoodType(), saved.getStartingHour(), saved.getFinishingHour(), saved.getPostalCode(), saved.getAddressNumber());
+        return new RestaurantDto(saved.getId(), saved.getName(), saved.getCnpj(), saved.getFoodType(), saved.getStartingHour(), saved.getFinishingHour(), saved.getPostalCode(), saved.getAddressNumber(), saved.getOpenOnlyOnBusinessDay());
     }
 
     @GetMapping
@@ -66,14 +67,15 @@ public class RestaurantController {
                         r.getStartingHour(),
                         r.getFinishingHour(),
                         r.getPostalCode(),
-                        r.getAddressNumber()
+                        r.getAddressNumber(),
+                        r.getOpenOnlyOnBusinessDay()
                         )).collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
     public RestaurantDto findRestaurant(@PathVariable UUID id){
         Restaurant restaurant = findRestaurant.findRestaurant(id);
-        return new RestaurantDto(restaurant.getId(), restaurant.getName(), restaurant.getCnpj(), restaurant.getFoodType(), restaurant.getStartingHour(), restaurant.getFinishingHour(), restaurant.getPostalCode(), restaurant.getAddressNumber());
+        return new RestaurantDto(restaurant.getId(), restaurant.getName(), restaurant.getCnpj(), restaurant.getFoodType(), restaurant.getStartingHour(), restaurant.getFinishingHour(), restaurant.getPostalCode(), restaurant.getAddressNumber(), restaurant.getOpenOnlyOnBusinessDay());
     }
 
     @DeleteMapping("/{id}")
@@ -99,7 +101,8 @@ public class RestaurantController {
                 r.getStartingHour(),
                 r.getFinishingHour(),
                 r.getPostalCode(),
-                r.getAddressNumber()
+                r.getAddressNumber(),
+                r.getOpenOnlyOnBusinessDay()
         )).collect(Collectors.toList());
     }
 
@@ -113,7 +116,8 @@ public class RestaurantController {
                 r.getStartingHour(),
                 r.getFinishingHour(),
                 r.getPostalCode(),
-                r.getAddressNumber()
+                r.getAddressNumber(),
+                r.getOpenOnlyOnBusinessDay()
         )).collect(Collectors.toList());
     }
     @GetMapping("/zipcode")
@@ -126,7 +130,8 @@ public class RestaurantController {
                 r.getStartingHour(),
                 r.getFinishingHour(),
                 r.getPostalCode(),
-                r.getAddressNumber()
+                r.getAddressNumber(),
+                r.getOpenOnlyOnBusinessDay()
         )).collect(Collectors.toList());
     }
 

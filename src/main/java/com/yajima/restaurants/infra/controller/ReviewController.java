@@ -64,7 +64,8 @@ public class ReviewController {
                                         booking.getTable().getRestaurant().getStartingHour(),
                                         booking.getTable().getRestaurant().getFinishingHour(),
                                         booking.getTable().getRestaurant().getPostalCode(),
-                                        booking.getTable().getRestaurant().getAddressNumber()
+                                        booking.getTable().getRestaurant().getAddressNumber(),
+                                        booking.getTable().getRestaurant().getOpenOnlyOnBusinessDay()
                                 )
                         ),
                         new Customer(
