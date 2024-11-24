@@ -33,4 +33,20 @@ public class BookingTest {
 
     }
 
+    @Test
+    void shouldRegisterBooking(){
+        Customer customer1 = new Customer(UUID.randomUUID(), "John", "333.333.333-00", "teste@teste.com.br");
+        Restaurant restaurant1 = new Restaurant(UUID.randomUUID(), "Restaurant", "00.000.000/0000-00","chinese", LocalTime.parse("12:00"), LocalTime.parse("18:00"), "00000-000", 2, true);
+        Table table1 = new Table(UUID.randomUUID(),10, 5,"available", restaurant1);
+        Booking booking1 = new Booking(UUID.randomUUID(), "reserved",LocalDateTime.parse("2024-11-22T12:15:30"),LocalDateTime.parse("2024-11-22T16:15:30"), table1, customer1);
+
+        Assertions.assertEquals(Booking.class, booking1.getClass());
+        Assertions.assertEquals("reserved", booking1.getStatus());
+        Assertions.assertEquals(LocalDateTime.parse("2024-11-22T12:15:30"), booking1.getBookingStart());
+        Assertions.assertEquals(LocalDateTime.parse("2024-11-22T16:15:30"), booking1.getBookingFinish());
+        Assertions.assertEquals(table1.getClass(), booking1.getTable().getClass());
+        Assertions.assertEquals(customer1.getClass(), booking1.getCustomer().getClass());
+
+    }
+
 }
