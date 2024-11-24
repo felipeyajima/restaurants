@@ -14,9 +14,7 @@
 In this project, the restaurant owners can register your establishment with some important information, in addition the tables that que customer will register your bookings. There will be customer information to track the whole data, and in the final of booking, the customer will be able to review the meal and the restaurant. 
 
 #### booking call example
-![booking.png](..%2F..%2Fbooking.png)
-
-
+![Booking Call](booking.png)
 
 
 
