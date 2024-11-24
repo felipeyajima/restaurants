@@ -7,7 +7,10 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalTime;
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.fail;
+
 public class RestaurantTest {
+
     @Test
     public void shouldntSaveCnpjWithInvalidFormat(){
         Assertions.assertThrows(ControllerSystemException.class,
@@ -19,7 +22,6 @@ public class RestaurantTest {
 
     }
 
-
     @Test
     public void shouldntSavePostalCodeWithInvalidFormat(){
         Assertions.assertThrows(ControllerSystemException.class,
@@ -29,6 +31,22 @@ public class RestaurantTest {
         Assertions.assertThrows(ControllerSystemException.class,
                 () -> new Restaurant(UUID.randomUUID(),"Restaurant","11.222.333/5555-66", "Chinese", LocalTime.parse("15:32"), LocalTime.parse("15:32"), "", 12, true));
 
+    }
+
+    @Test
+    void shouldRegisterRestaurant(){
+
+        Restaurant restaurant = new Restaurant(UUID.randomUUID(), "Restaurant", "11.222.333/5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "00000-000", 12, true);
+
+        Assertions.assertEquals(Restaurant.class, restaurant.getClass());
+        Assertions.assertEquals("Restaurant", restaurant.getName());
+        Assertions.assertEquals("11.222.333/5555-66", restaurant.getCnpj());
+        Assertions.assertEquals("Chinese", restaurant.getFoodType());
+        Assertions.assertEquals(LocalTime.parse("15:32"), restaurant.getStartingHour());
+        Assertions.assertEquals(LocalTime.parse("15:32"), restaurant.getFinishingHour());
+        Assertions.assertEquals("00000-000", restaurant.getPostalCode());
+        Assertions.assertEquals(12, restaurant.getAddressNumber());
+        Assertions.assertEquals(true, restaurant.getOpenOnlyOnBusinessDay());
     }
 
 
