@@ -1,12 +1,14 @@
 package com.yajima.restaurants.infra.persistence;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.UUID;
 
 @Data
 @Entity
+@Builder
 @Table(name="customer_db")
 public class CustomerEntity {
 

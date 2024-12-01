@@ -1,6 +1,7 @@
 package com.yajima.restaurants.infra.persistence;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -8,6 +9,7 @@ import java.util.UUID;
 
 @Data
 @Entity
+@Builder
 @Table(name="booking_db")
 public class BookingEntity {
 
