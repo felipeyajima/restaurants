@@ -1,6 +1,5 @@
 package com.yajima.restaurants.infra.gateway;
 
-import com.yajima.restaurants.domain.entities.customer.Customer;
 import com.yajima.restaurants.infra.persistence.CustomerEntity;
 import com.yajima.restaurants.infra.persistence.CustomerRepository;
 import org.junit.jupiter.api.AfterEach;
