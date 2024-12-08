@@ -1,5 +1,6 @@
 package com.yajima.restaurants.infra.gateway;
 
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
 import com.yajima.restaurants.infra.persistence.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,8 +14,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class BookingJpaRepositoryTest {
@@ -85,6 +85,7 @@ public class BookingJpaRepositoryTest {
         assertThat(bookingReceived).hasSize(2).containsExactlyInAnyOrder(booking1, booking2);
         verify(bookingRepository, times(1)).findAll();
     }
+
 
     @Test
     void shouldExcludeBooking(){
