@@ -1,5 +1,6 @@
 package com.yajima.restaurants.infra.gateway;
 
+import com.yajima.restaurants.infra.controller.exceptions.ControllerSystemException;
 import com.yajima.restaurants.infra.persistence.*;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
@@ -9,8 +10,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Optional;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
@@ -65,6 +70,8 @@ public class BookingJpaRepositoryIT {
             assertThat(receivedBookingEntity.getStatus()).isEqualTo(savedBookingEntity.getStatus());
         });
     }
+
+
 
     @Test
     void shouldAllowListBookings(){
