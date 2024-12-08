@@ -3,24 +3,22 @@ package com.yajima.restaurants.infra.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.yajima.restaurants.application.usecases.restaurant.FindRestaurant;
+import com.yajima.restaurants.application.usecases.restaurant.*;
 import com.yajima.restaurants.application.usecases.tables.*;
 import com.yajima.restaurants.domain.entities.restaurant.Restaurant;
 import com.yajima.restaurants.domain.entities.table.Table;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
-
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class TableControllerTest {
@@ -40,14 +38,18 @@ public class TableControllerTest {
     @Mock
     private FindRestaurant findRestaurant;
 
+
     AutoCloseable mock;
 
     @BeforeEach
     void setup(){
+
         mock = MockitoAnnotations.openMocks(this);
+
         TableController tableController = new TableController(createTable, listTables, listTablesPerRestaurant, findTable, deleteTable, findRestaurant);
         mockMvc = MockMvcBuilders.standaloneSetup(tableController)
                 .build();
+
     }
 
     @AfterEach
@@ -57,17 +59,11 @@ public class TableControllerTest {
 
 
     @Test
-    void shouldCreateTable() throws  Exception{
-        //arrange
-        var table = generateTable();
-        when(createTable.createTable(any(Table.class))).thenAnswer(t -> t.getArgument(0));
-
-        mockMvc.perform(post("/tables")
-                        .contentType("application/json")
-                        .content(asJsonString(table)))
+    void shouldFindTables() throws  Exception{
+        List<Table> lista = new ArrayList<Table>();
+        when(listTables.getAllTables()).thenReturn(lista);
+        mockMvc.perform(get("/tables"))
                 .andExpect(status().isOk());
-
-        verify(createTable, times(1)).createTable(any(Table.class));
     }
 
 
@@ -75,11 +71,18 @@ public class TableControllerTest {
         return new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(object);
     }
 
-    private Table generateTable(){
-        Restaurant restaurant1 = new Restaurant(UUID.randomUUID(), "Restaurant", "00.000.000/0000-00","chinese", LocalTime.parse("12:00"), LocalTime.parse("18:00"), "00000-000", 2, true);
-        Table table = new Table(UUID.randomUUID(), 2, 4, "available", restaurant1);
+
+    private Restaurant generateRestaurant(){
+        Restaurant restaurant = new Restaurant(UUID.randomUUID(), "Restaurant", "11.222.333/5555-66", "Chinese",  LocalTime.parse("15:32"), LocalTime.parse("15:32"), "00000-000", 12, true);
+        return restaurant;
+    }
+
+    private Table generateTable(Restaurant restaurant){
+        Table table = new Table(UUID.randomUUID(), 2, 4, "available", restaurant);
         return table;
     }
+
+
 
 
 }
