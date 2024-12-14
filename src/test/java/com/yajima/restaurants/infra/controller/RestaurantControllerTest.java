@@ -73,17 +73,6 @@ public class RestaurantControllerTest {
 
     }
 
-    @Test
-    void shouldAllowFindRestaurant(){
-        fail("not implemented");
-    }
-
-    @Test
-    void shouldAllowListRestaurants(){
-        fail("not implemented");
-    }
-
-
 
     public static String asJsonString(final Object object) throws JsonProcessingException {
         return new ObjectMapper().registerModule(new JavaTimeModule()).writeValueAsString(object);

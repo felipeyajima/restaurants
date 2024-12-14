@@ -49,18 +49,4 @@ public class RestaurantTest {
         Assertions.assertEquals(true, restaurant.getOpenOnlyOnBusinessDay());
     }
 
-
-    /*
-    @Test
-    public void shouldCreateRestaurantUsingRestaurantBuilder(){
-        RestaurantBuilder factory = new RestaurantBuilder();
-        Restaurant restaurant = factory.withNameCnpjOpenningHourFinishingHour("Restaurante do Batata", "00.111.222/3333-44", LocalTime.parse("12:00"), LocalTime.parse("12:00"), "0000000", 12);
-        Assertions.assertEquals("Restaurante do Batata", restaurant.getName());
-
-        restaurant = factory.includeAddress("00000-000", 1, "Rua dos Fundos");
-        Assertions.assertEquals(1, restaurant.getAddress().getNumber());
-
-    }
-
-     */
 }
