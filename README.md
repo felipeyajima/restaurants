@@ -26,4 +26,22 @@ In this project, the restaurant owners can register your establishment with some
 
 
 
+#### Tests
+
+- to execute unit tests
+```sh
+mvn test
+```
+
+- to execute integrated tests
+```sh
+mvn test -P integrated-test
+```
+
+- to execute system tests
+```sh
+mvn spring-boot:start
+mvn test -P system-test
+```
+
 

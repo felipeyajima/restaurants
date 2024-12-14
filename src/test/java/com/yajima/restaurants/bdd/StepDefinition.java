@@ -8,8 +8,6 @@ import io.restassured.response.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-import java.awt.*;
-
 import static io.restassured.RestAssured.given;
 
 
@@ -36,9 +34,6 @@ public class StepDefinition {
                 .statusCode(HttpStatus.OK.value());
 
     }
-
-
-
 
     private CustomerEntity generateCustomerEntity(){
         return CustomerEntity.builder()
