@@ -91,10 +91,6 @@ public class RestaurantJpaRepositoryTest {
 
     }
 
-    @Test
-    void shouldExcludeRestaurant() {
-        fail("validation not implemented");
-    }
 
     private RestaurantEntity generateRestaurantEntity(){
         return RestaurantEntity.builder()

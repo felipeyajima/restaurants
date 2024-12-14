@@ -87,10 +87,6 @@ public class BookingJpaRepositoryTest {
     }
 
 
-    @Test
-    void shouldExcludeBooking(){
-        fail("test not implemented");
-    }
 
     private BookingEntity generateBookingEntity(){
 

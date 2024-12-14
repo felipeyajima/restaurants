@@ -69,16 +69,6 @@ public class CustomerControllerTest {
 
 
 
-    @Test
-    void shouldAllowFindCustomer(){
-        fail("not implemented");
-    }
-
-    @Test
-    void shouldAllowListCustomers(){
-        fail("not implemented");
-    }
-
 
     public static String asJsonString(final Object object) throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(object);

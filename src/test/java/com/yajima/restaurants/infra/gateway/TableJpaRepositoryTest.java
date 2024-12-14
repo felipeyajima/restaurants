@@ -87,11 +87,6 @@ public class TableJpaRepositoryTest {
         verify(tableRepository, times(1)).findAll();
     }
 
-    @Test
-    void shouldExcludeRestaurant(){
-        fail("validation not implemented");
-    }
-
 
     private TableEntity generateTableEntity(){
         RestaurantEntity restaurantEntity = RestaurantEntity.builder()

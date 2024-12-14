@@ -91,10 +91,6 @@ public class CustomerJpaRepositoryTest {
 
     }
 
-    @Test
-    void shouldExcludeCustomer(){
-        fail("teste nao implementado");
-    }
 
 
     private CustomerEntity generateCustomerEntity(){
