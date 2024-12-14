@@ -1,0 +1,11 @@
+
+mvn clean package -DskipTests
+
+docker build . -t felipebatista765/restaurants:latest -t felipebatista765/restaurants:v0.0.4
+
+
+docker run -p 8080:8080 felipebatista765/restaurants:latest
+
+
+docker push felipebatista765/restaurants:v0.0.4
+docker push felipebatista765/restaurants:latest
