@@ -7,13 +7,14 @@
 [![OpenAPI](https://img.shields.io/badge/OPEN%20API-EF0092)](https://www.openapis.org/)
 [![OpenAPI](https://img.shields.io/badge/SPRING%20DATA%20JPA-FC6A31)](https://www.openapis.org/)
 [![OpenAPI](https://img.shields.io/badge/IN%20MEMORY%20H2%20DATABASE-00EA64)](https://www.openapis.org/)
-[![OpenAPI](https://img.shields.io/badge/UNIT%20TESTS-8A2BE2)](https://www.openapis.org/)
+[![OpenAPI](https://img.shields.io/badge/TESTS-8A2BE2)](https://www.openapis.org/)
+[![OpenAPI](https://img.shields.io/badge/CUCUMBER-00EA64)](https://www.openapis.org/)
 
 ### DESCRIPTION
 
-In this project, the restaurant owners can register your establishment with some important information, in addition the tables that que customer will register your bookings. There will be customer information to track the whole data, and in the final of booking, the customer will be able to review the meal and the restaurant. 
+ 
 
-#### booking call example
+#### review call example
 ![Booking Call](booking.png)
 
 
@@ -21,8 +22,6 @@ In this project, the restaurant owners can register your establishment with some
 #### Swagger UI
 
 - Open Swagger UI at `localhost:8080/swagger-ui` after running the application.
-
-#### Postman Collections
 
 
 
@@ -35,13 +34,20 @@ mvn test
 
 - to execute integrated tests
 ```sh
-mvn test -P integrated-test
+mvn test -P integration-test
 ```
 
-- to execute system tests
+- to execute system tests and BDD
 ```sh
 mvn spring-boot:start
 mvn test -P system-test
 ```
+
+
+- to execute performance test (need make utility installed on your computer)
+```sh
+make performance-test
+```
+
 
 
